@@ -2,8 +2,15 @@ const express = require("express");
 
 const router = express.Router();
 
-const { browse } = require("../../../controllers/tileActions");
+/* ************************************************************************* */
+// Define Your API Routes Here
+/* ************************************************************************* */
 
-router.get("/", browse,);
+const { browse } = require("../../../controllers/boatActions");
+
+
+router.get("/", browse);
+
+/* ************************************************************************* */
 
 module.exports = router;

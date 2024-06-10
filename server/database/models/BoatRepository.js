@@ -5,21 +5,41 @@ class BoatRepository extends AbstractRepository {
     super({ table: "boat" });
   }
 
-  async readAll() {
+  async readAll(where) {
     // Execute the SQL SELECT query to retrieve all boats from the "boat" table
-    const [rows] = await this.database.query(`select * from ${this.table}`);
 
+    let query = `
+    select b.*, t.type, t.has_treasure
+    FROM ${this.table} as b
+    INNER JOIN tile as t
+    ON t.coord_x = b.coord_x
+    AND t.coord_y = b.coord_y `;
+
+    const params = []
+
+    if(where && where.name) {
+      query += `WHERE b.name = ?`
+      params.push(where.name)
+    }
+      
+    const [rows] = await this.database.query(query, params);
     // Return the array of boats
     return rows;
   }
 
   async update(boat) {
-    const [result] = await this.database.query(
-      `update boat set coord_x=?, coord_y=? where id=?`,
+    // Execute the SQL SELECT query to retrieve all boats from the "boat" table
+    const [rows] = await this.database.query(
+      `
+      UPDATE ${this.table} 
+      SET coord_x = ?, coord_y = ?
+      WHERE id = ?
+      `,
       [boat.coord_x, boat.coord_y, boat.id]
     );
 
-    return result.affectedRows;
+    // Return the array of boats
+    return rows.affectedRows;
   }
 }
 

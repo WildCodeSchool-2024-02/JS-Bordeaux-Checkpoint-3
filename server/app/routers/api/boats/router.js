@@ -11,9 +11,10 @@ const { browse, edit } = require("../../../controllers/boatActions");
 
 router.get("/", browse);
 
-const validateTile = require("../../../services/tileExists")
+// const validateTile = require("../../../services/tileExists");
+const tileExists = require("../../../services/tileExists");
 
-router.put("/:id", validateTile, edit)
+router.put("/:id", tileExists, edit)
 
 /* ************************************************************************* */
 
