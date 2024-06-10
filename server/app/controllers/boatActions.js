@@ -23,7 +23,7 @@ const edit = async (req, res, next) => {
   try {
     const result = await tables.boat.update(item);
 
-    res.status(204).json(result);
+    res.sendStatus(204).json(result);
   } catch (err) {
     next(err);
   }
