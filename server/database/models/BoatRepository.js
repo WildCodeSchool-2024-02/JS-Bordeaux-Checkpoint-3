@@ -12,6 +12,15 @@ class BoatRepository extends AbstractRepository {
     // Return the array of boats
     return rows;
   }
+
+  async update(boat) {
+    const { id } = boat;
+    const [rows] = await this.database.query(
+      `UPDATE ${this.table} SET coord_x = ?, coord_y = ? WHERE id = ?`,
+      [ boat.coord_x, boat.coord_y, id]
+    );
+    return rows.affectedRows
+  }
 }
 
 module.exports = BoatRepository;
