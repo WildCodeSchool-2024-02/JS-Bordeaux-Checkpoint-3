@@ -2,9 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
+// const tileExists = require("../../services/tileExists");
+
 /* ************************************************************************* */
 // Import And Use Routers Here
 /* ************************************************************************* */
+
+// router.use(tileExists);
 
 const boatsRouter = require("./boats/router");
 
