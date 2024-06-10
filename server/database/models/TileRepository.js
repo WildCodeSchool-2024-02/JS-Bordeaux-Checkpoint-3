@@ -10,7 +10,6 @@ class TileRepository extends AbstractRepository {
     const [rows] = await this.database.query(
       `select * from ${this.table} order by coord_y, coord_x`
     );
-
     // Return the array of tiles
     return rows;
   }
