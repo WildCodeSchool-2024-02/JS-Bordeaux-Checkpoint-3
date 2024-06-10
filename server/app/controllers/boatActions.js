@@ -11,8 +11,25 @@ const browse = async (req, res, next) => {
     // Pass any errors to the error-handling middleware
     next(err);
   }
+}
+
+  const edit = async (req, res, next) => {
+    const boat = {id: req.params.id, coord_x: req.body.coord_x, coord_y: req.body.coord_y}
+    try {
+      // Fetch all boats from the database
+      const result = await tables.boat.update(boat);
+  
+      // Respond with the boats in JSON format
+      if(result) {
+        res.sendStatus(204);
+      }
+    } catch (err) {
+      // Pass any errors to the error-handling middleware
+      next(err);
+    }
 };
 
 module.exports = {
   browse,
+  edit,
 };
