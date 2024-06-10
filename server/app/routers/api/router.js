@@ -10,6 +10,10 @@ const boatsRouter = require("./boats/router");
 
 router.use("/boats", boatsRouter);
 
+const boatsRouterId = require("./boats/router");
+
+router.use("/boats:id", boatsRouterId);
+
 const tilesRouter = require("./tiles/router");
 
 router.use("/tiles", tilesRouter);
