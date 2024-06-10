@@ -13,9 +13,8 @@ class BoatRepository extends AbstractRepository {
     const [rows] = await this.database.query(
       `
       SELECT * FROM ${this.table}
-      JOIN tile
-      ON boat.coord_x = tile.coord_x
-      AND boat.coord_y = tile.coord_y
+      INNER JOIN tile
+      ON ${this.table}.id = tile.id
       `
     );
 
