@@ -9,9 +9,9 @@ const router = express.Router();
 const { browse, edit } = require("../../../controllers/boatActions");
 const validateTuile = require("../../../services/tileExists");
 
-router.get("/", browse, validateTuile);
+router.get("/", browse);
 
-router.put("/:id", edit, validateTuile);
+router.put("/:id", validateTuile, edit);
 /* ************************************************************************* */
 
 module.exports = router;
