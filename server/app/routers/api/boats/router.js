@@ -7,9 +7,11 @@ const router = express.Router();
 /* ************************************************************************* */
 
 const { browse, edit } = require("../../../controllers/boatActions");
+const tileExists = require("../../../services/tileExists");
 
 router.get("/", browse);
-router.put("/:id", edit);
+// Le middleware vérifie l'exactitude des données, se place donc avant le controlleur
+router.put("/:id", tileExists, edit);
 
 /* ************************************************************************* */
 
