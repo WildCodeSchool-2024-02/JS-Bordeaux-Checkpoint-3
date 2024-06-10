@@ -27,5 +27,5 @@ const edit = async (req, res, next) => {
 
 module.exports = {
   browse,
-  edit
+  edit,
 };
