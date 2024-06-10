@@ -35,6 +35,16 @@ class TileRepository extends AbstractRepository {
 
     return result;
   }
+
+  // async readByCoordinates(coordX, coordY) {
+  //   // const coordinates = await this.tables.tile;
+
+  //   const [rows] = await this.database.query(
+  //     `select * from ${this.table} where coord_x between 0 and 11 and coord_y between 0 and 5`
+  //   );
+  //   console.log(rows);
+  //   return rows;
+  // }
 }
 
 module.exports = TileRepository;
