@@ -3,7 +3,8 @@ CREATE TABLE boat (
   name VARCHAR(255) NOT NULL,
   coord_x INT NOT NULL,
   coord_y INT NOT NULL,
-  PRIMARY KEY(id)
+  PRIMARY KEY(id),
+  UNIQUE(coord_x, coord_y)
 );
 
 CREATE TABLE tile (
@@ -12,4 +13,6 @@ CREATE TABLE tile (
   coord_x INT NOT NULL,
   coord_y INT NOT NULL,
   PRIMARY KEY(id)
+  UNIQUE(coord_x, coord_y)
 );
+
